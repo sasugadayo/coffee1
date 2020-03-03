@@ -1,0 +1,7 @@
+.contents.row
+  %p
+    = @nickname
+    さんの投稿一覧
+  - @shops.each do |shop|
+    = render partial: "shops/shop", locals: { shop: shop }
+  = paginate(@shops)
