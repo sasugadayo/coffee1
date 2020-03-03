@@ -11,5 +11,8 @@ class Shop < ApplicationRecord
     Shop.where('text LIKE(?)', "%#{search}%")
   end
 
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
 end

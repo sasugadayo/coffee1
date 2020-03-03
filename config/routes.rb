@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
+  # get 'favorites/create'
+  # get 'favorites/destroy'
   devise_for :users
   root to: 'shops#index'
   resources :shops do
+    resource :favorites, only: [:create, :destroy]
     resources :comments, only: :create
     collection do
       get 'search'
