@@ -1,5 +1,7 @@
 {
   "name": "coffee1",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "swiper": "^5.3.6"
+  }
 }
