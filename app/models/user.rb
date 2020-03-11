@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :shops
   has_many :comments  # commentsテーブルとのアソシエーション
+  has_many :favorites
+  has_many :fav_shops, through: :favorites, source: :shop
+
 end
