@@ -72,3 +72,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 
 gem 'haml-rails'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
