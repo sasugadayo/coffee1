@@ -6,7 +6,7 @@ $(document).ready(function() {
     loop: true,
     autoplay: {
       delay: 3000,
-      disableOnInteraction: false,
+      disableOnInteraction: true,
       reverseDirection: false
     },
     navigation: {
