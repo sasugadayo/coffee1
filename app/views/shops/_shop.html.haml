@@ -9,7 +9,7 @@
           = link_to '編集', "/shops/#{shop.id}/edit", method: :get
         %li
           = link_to '削除', "/shops/#{shop.id}", method: :delete
-  %h20= shop.text.truncate(8)
+  %h20= truncate(shop.title, length:10)
   -# = simple_format(shop.text)
   %span.name
     %a{:href => "/users/#{shop.user.id}"}
