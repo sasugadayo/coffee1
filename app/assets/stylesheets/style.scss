@@ -1,5 +1,15 @@
 @import "compass";
 @import "hero-slider";
+@import "base";
+
+@media (min-width: 600px) {
+  @import "600up";
+}
+
+@media (min-width: 960px) {
+  @import "960up";
+}
+
 
 /*
  * "ほのか明朝" licensed under the IPA Font License Agreement v1.0
@@ -212,6 +222,8 @@ header.header {
     right: 0;
   }
 }
+
+// 真ん中のコンテンツたち
 div.contents.row {
   h2 {
     @include boxBase(20px 0, 0);
@@ -246,6 +258,7 @@ div.contents.row {
       z-index: 1;
       border-radius: 3px;
     }
+
     .more {
       position: absolute;
       cursor: pointer;
@@ -285,6 +298,15 @@ div.contents.row {
         }
       }
     }
+
+    h20 {
+      // margin: 50px 50px;
+      // span {
+      //   color: #aaa;
+
+      // }
+    }
+
     p {
       @extend .serif;
       position: absolute;

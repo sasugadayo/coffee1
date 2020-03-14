@@ -12,25 +12,25 @@
                 -# = image_tag "image: url(#{@shop.image});"
                 = image_tag(shop.image)
                 -# {:style => "image: url(#{shop.image});"}
-                .hero__title
-                  = shop.text
-                  .more
-                    %span= image_tag 'arrow_top.png'
-                    %ul.more_list
-                      %li
-                        = link_to '詳細', "/shops/#{shop.id}", method: :get
-                      - if user_signed_in? && current_user.id == shop.user_id
-                        %li
-                          = link_to '編集', "/shops/#{shop.id}/edit", method: :get
-                        %li
-                          = link_to '削除', "/shops/#{shop.id}", method: :delete
-                  %p= shop.text
-                  = simple_format(shop.text)
-                  %span.name
-                    %a{:href => "/users/#{shop.user.id}"}
-                      %span 投稿者
-                      = shop.user.nickname
-                = paginate(@shops)
+                -# .hero__title
+                -#   = shop.text
+                -#   .more
+                -#     %span= image_tag 'arrow_top.png'
+                -#     %ul.more_list
+                -#       %li
+                -#         = link_to '詳細', "/shops/#{shop.id}", method: :get
+                -#       - if user_signed_in? && current_user.id == shop.user_id
+                -#         %li
+                -#           = link_to '編集', "/shops/#{shop.id}/edit", method: :get
+                -#         %li
+                -#           = link_to '削除', "/shops/#{shop.id}", method: :delete
+                -#   %p= shop.text
+                -#   = simple_format(shop.text)
+                -#   %span.name
+                -#     %a{:href => "/users/#{shop.user.id}"}
+                -#       %span 投稿者
+                -#       = shop.user.nickname
+                -# = paginate(@shops)
                 -# \...
           / If we need pagination
           .swiper-pagination
@@ -40,9 +40,11 @@
           / If we need scrollbar
           .swiper-scrollbar
 .contents.row
-  - @shops.each do |shop|
-    = render partial: "shop", locals: { shop: shop }
-  = paginate(@shops)
+  .houses
+    .houses__inner
+      - @shops.each do |shop|
+        = render partial: "shop", locals: { shop: shop }
+    = paginate(@shops)
 
 %script{src: "https://unpkg.com/swiper/js/swiper.min.js"}
 
