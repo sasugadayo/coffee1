@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
+  validates :title, length: { minimum: 1, maximum: 30 }
 
   def self.search(search)
     return Shop.all unless search

@@ -1,57 +1,61 @@
-.contents.row
-  .content_post{:style => "background-image: url(#{@shop.image});"}
-    - if user_signed_in? && current_user.id == @shop.user_id
-      .more
-        %span= image_tag 'arrow_top.png'
-        %ul.more_list
-          %li
-            = link_to '編集', "/shops/#{@shop.id}/edit", method: :get
-          %li
-            = link_to '削除', "/shops/#{@shop.id}", method: :delete
+#global-container
+  .contents.row
+    .content_post{:style => "background-image: url(#{@shop.image});"}
+      - if user_signed_in? && current_user.id == @shop.user_id
+        .more
+          %span= image_tag 'arrow_top.png'
+          %ul.more_list
+            %li
+              = link_to '編集', "/shops/#{@shop.id}/edit", method: :get
+            %li
+              = link_to '削除', "/shops/#{@shop.id}", method: :delete
 
 
 
-        -# %span email:
-    -# = link_to @shop.user.email, user_path(@shop.user.id)
-    -# %p
-    -# %span 投稿内容:
-    -# = link_to @shop.body, shop_path(shop.id)
-      / 追加
-    - if user_signed_in?
-      - if @shop.favorited_by?(current_user)
-        / ログインしているユーザーがファボしたかどうかで分岐
-        %p
-          %span お気に入り解除:
-          = link_to @shop.favorites.count, shop_favorites_path(shop.id), method: :delete
+          -# %span email:
+      -# = link_to @shop.user.email, user_path(@shop.user.id)
+      -# %p
+      -# %span 投稿内容:
+      -# = link_to @shop.body, shop_path(shop.id)
+        / 追加
+      - if user_signed_in?
+        - if @shop.favorited_by?(current_user)
+          / ログインしているユーザーがファボしたかどうかで分岐
+          %p
+            %span お気に入り解除:
+            = link_to @shop.favorites.count, shop_favorites_path(@shop.id), method: :delete
+        - else
+          %p
+            %span お気に入り登録:
+            = link_to @shop.favorites.count, shop_favorites_path(@shop.id), method: :post
       - else
         %p
-          %span お気に入り登録:
-          = link_to @shop.favorites.count, shop_favorites_path(@shop.id), method: :post
-    - else
-      %p
-        %span お気に入り数:
-        = shop.favorites.count
+          %span お気に入り数:
+          = shop.favorites.count
 
-  %span.name
-    %a{:href => "/users/#{@shop.user.id}"}
-      %span 投稿者
-      = @shop.user.nickname
-  .text= @shop.text
+    %span.name
+      %a{:href => "/users/#{@shop.user.id}"}
+        %span 投稿者
+        = @shop.user.nickname
+    %p
+      %span title:
+      = @shop.title
+      .text= @shop.text
 
-  .container
-    - if current_user
-      = form_with(model: [@shop, @comment], local: true, id: "new_comment") do |form|
-        = form.text_area :text, placeholder: "コメントする" , rows: "2", class: "textbox"
-        = form.submit "SEND", class: "form__submit"
-    - else
-      %strong
-        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-    .comments
-      %h4 ＜コメント一覧＞
-      - if @comments
-        - @comments.each do |comment|
-          %p
-            %strong
-              = link_to comment.user.nickname, "/users/#{comment.user_id}"
-              ：
-            = comment.text
+    .container
+      - if current_user
+        = form_with(model: [@shop, @comment], local: true, id: "new_comment") do |form|
+          = form.text_area :text, placeholder: "コメントする" , rows: "2", class: "textbox"
+          = form.submit "SEND", class: "form__submit"
+      - else
+        %strong
+          %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+      .comments
+        %h4 ＜コメント一覧＞
+        - if @comments
+          - @comments.each do |comment|
+            %p
+              %strong
+                = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                ：
+              = comment.text
