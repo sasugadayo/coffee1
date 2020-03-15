@@ -1,4 +1,33 @@
-# README
+# おすすめカフェ投稿アプリ
+  おすすめのカフェを投稿、検索できます。
+<br>
+
+## 接続方法
+- URL : http://18.176.166.55/
+- ID/Pass
+  - ID: sasugadayo
+  - Pass: 12211221
+- テスト用アカウント等
+    - メールアドレス名: test@test
+    - パスワード: hogehoge
+    
+## 使用技術
+- Ruby 2.5.1  
+- Rails 5.2.4.1
+- Haml/Scss   
+- javascript
+- GitHub, Git
+- MySQL 5.6  
+- AWS 
+  - EC2  
+  - Capstrano  
+- Nginx, Unicorn
+
+## 制作背景
+
+## 工夫したポイント
+
+## 課題や今後実装したい機能
 
 # DB設計
 ## usersテーブル
