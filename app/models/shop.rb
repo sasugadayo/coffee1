@@ -1,11 +1,14 @@
 class Shop < ApplicationRecord
   validates :text, presence: true
+  validates :title, presence: true, length: { minimum: 1, maximum: 30 }
+  validates :image, presence: true
+
+
   belongs_to :user
   has_many :comments  # commentsテーブルとのアソシエーション
   has_many :favorites
   has_many :users, through: :favorites
 
-  validates :title, length: { minimum: 1, maximum: 30 }
 
   def self.search(search)
     return Shop.all unless search
