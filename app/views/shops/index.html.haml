@@ -32,13 +32,13 @@
                       = shop.user.nickname
                 = paginate(@shops)
                 -# \...
-          / If we need pagination
-          .swiper-pagination
-          / If we need navigation buttons
-          .swiper-button-prev
-          .swiper-button-next
-          / If we need scrollbar
-          .swiper-scrollbar
+          -# / If we need pagination
+          -# .swiper-pagination
+          -# / If we need navigation buttons
+          -# .swiper-button-prev
+          -# .swiper-button-next
+          -# / If we need scrollbar
+          -# .swiper-scrollbar
   .contents.row
     .houses
       .houses__inner
@@ -46,6 +46,6 @@
           = render partial: "shop", locals: { shop: shop }
         = paginate(@shops)
 
-%script{src: "https://unpkg.com/swiper/js/swiper.min.js"}
+-# %script{src: "https://unpkg.com/swiper/js/swiper.min.js"}
 
 
