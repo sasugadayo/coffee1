@@ -3,6 +3,7 @@ class Shop < ApplicationRecord
   validates :title, presence: true, length: { minimum: 1, maximum: 30 }
   validates :image, presence: true
 
+  mount_uploader :image, ImageUploader
 
   belongs_to :user
   has_many :comments  # commentsテーブルとのアソシエーション

@@ -10,7 +10,7 @@
             - @shops.each do |shop|
               .swiper-slide
                 -# = image_tag "image: url(#{@shop.image});"
-                = image_tag(shop.image)
+                = image_tag(shop.image.url)
                 -# {:style => "image: url(#{shop.image});"}
                 .hero__title
                   = shop.text
@@ -32,13 +32,13 @@
                       = shop.user.nickname
                 = paginate(@shops)
                 -# \...
-          / If we need pagination
-          .swiper-pagination
-          / If we need navigation buttons
-          .swiper-button-prev
-          .swiper-button-next
-          / If we need scrollbar
-          .swiper-scrollbar
+          -# / If we need pagination
+          -# .swiper-pagination
+          -# / If we need navigation buttons
+          -# .swiper-button-prev
+          -# .swiper-button-next
+          -# / If we need scrollbar
+          -# .swiper-scrollbar
   .contents.row
     .houses
       .houses__inner
