@@ -35,11 +35,17 @@
 ・ページネーション(kaminari)
 ・swiper.jsを用いた投稿画像スライド機能
 ・pace.jsを用いたページローディング表示
+・Basic認証
 
 ## 工夫したポイント
+・バックエンド
+お気に入り機能を導入。中間テーブルを使うことで、ユーザーと投稿に多対多の関係性を持たせてお気に入りに追加するようにした。
+・フロントエンド
+閲覧者が思わずまた利用したくなるように、swiperというプラグインを導入して、臨場感あるページを作った。
 
-
-## 課題や今後実装したい機能
+## 今後実装したい機能
+・お気に入り機能Ajax導入
+・ユーザーフォロー機能
 
 
 # DB設計
@@ -56,7 +62,6 @@
 - has_many :likes
 - has_many :fav_shops, through: :favorites, source: :shop
 
-
 ## shopsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -70,7 +75,6 @@
 - has_many :favorites
 - has_many :users, through: :favorites
 
-
 ## favoritesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -79,7 +83,6 @@
 ### Association
 - belongs_to :shop
 - belongs_to :user
-
 
 ## commentsテーブル
 |Column|Type|Options|
