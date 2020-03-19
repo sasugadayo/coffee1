@@ -9,6 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def show
+    # binding.pry
     @user = User.find(params[:id])
     @shops = @user.shops
     # mapメソッドを使いfavoriteをtweetの情報に変換

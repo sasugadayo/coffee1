@@ -28,8 +28,10 @@ class ShopsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @comment = Comment.new
     @comments = @shop.comments.includes(:user)
+    @favorite = current_user.favorites.find_by(shop_id: @shop.id)
   end
 
   def search

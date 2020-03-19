@@ -5,3 +5,43 @@
   - @shops.each do |shop|
     = render partial: "shops/shop", locals: { shop: shop }
   = paginate(@shops)
+
+
+.contents.row
+  %p
+    = @nickname
+    さんのお気に入り投稿一覧
+  - @favorite_shops.each do |shop|
+    .content_post{:style => "background-image: url(#{shop.image});"}
+      .more
+        %span= image_tag 'arrow_top.png'
+        %ul.more_list
+          %li
+            = link_to '詳細', "/shops/#{shop.id}", method: :get
+          - if user_signed_in? && current_user.id == shop.user_id
+            %li
+              = link_to '編集', "/shops/#{shop.id}/edit", method: :get
+            %li
+              = link_to '削除', "/shops/#{shop.id}", method: :delete
+      %h20= truncate(shop.title, length:10)
+      -# = simple_format(shop.text)
+      %span.name
+        %a{:href => "/users/#{shop.user.id}"}
+          %span 投稿者
+          = shop.user.nickname
+
+
+      - if user_signed_in?
+        - if shop.favorited_by?(current_user)
+          / ログインしているユーザーがファボしたかどうかで分岐
+          %p
+            %span お気に入り解除:
+            = link_to shop.favorites.count, shop_favorites_path(shop.id), method: :delete
+        - else
+          %p
+            %span お気に入り登録:
+            = link_to shop.favorites.count, shop_favorites_path(shop.id), method: :post
+      - else
+        %p
+          %span お気に入り数:
+          = shop.favorites.count
